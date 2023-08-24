@@ -19,6 +19,10 @@ public class Produto {
         this.estoque--;
     }
 
+    public void aumentarEstoque(int quantidade) {
+        this.estoque += quantidade;
+    }
+
     public Produto(String nome, int estoque) {
         int max = 999999;
         int min = 100000;
