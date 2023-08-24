@@ -36,12 +36,16 @@ public class Main {
                 comando = sc.nextLine();
             } else if (comando.equals("Cadastrar")) {
                 // TODO
+                // Cria um novo objeto Produto e adiciona à ArrayList Produtos
             } else if (comando.equals("Adicionar")) {
                 // TODO
+                // Pede o código do produto e quantidade a adicionar e adiciona usando a função aumentarEstoque do objeto Produto
             } else if (comando.equals("Remover")) {
                 // TODO
+                // Pede o código do produto e remove do ArrayList
             } else if (comando.equals("Vender")) {
                 // TODO
+                // Pede o código do produto e usa a funcao reduzirEstoque do objeto
             } 
 
         }
