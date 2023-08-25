@@ -7,8 +7,8 @@ import java.util.Scanner;
 - Adnan Medeiros Bezerra
 - Natália Galdino Bronzeado
 - Gizele
-- Caio Henrique
-- Aderval
+- Caio Henrique Ramos Medeiros
+- Adeval Neto Cordeiro de Albuquerque
 - Layla Kethlen Ramos Apolinario
 */
 
