@@ -1,7 +1,5 @@
 package comercio;
 
-import java.util.Random;
-
 public class Produto {
     private int codigo;
     private String nome;
@@ -19,15 +17,11 @@ public class Produto {
         this.estoque--;
     }
 
-    public void aumentarEstoque(int quantidade) {
+    public void alterarEstoque(int quantidade) {
         this.estoque += quantidade;
     }
 
-    public Produto(String nome, int estoque) {
-        int max = 999999;
-        int min = 100000;
-        int codigo = new Random().nextInt(max - min) + min;
-        
+    public Produto(String nome, int estoque, int codigo) {
         this.codigo = codigo;
         this.nome = nome;
         this.estoque = estoque;
