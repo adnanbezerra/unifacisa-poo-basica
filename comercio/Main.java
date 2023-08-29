@@ -7,7 +7,7 @@ import java.util.Scanner;
 /* MEMBROS DO GRUPO:
 - Adnan Medeiros Bezerra
 - Natália Galdino Bronzeado
-- Gizele
+- Gisele Gabrielle Vidal de Sousa
 - Caio Henrique Ramos Medeiros
 - Adeval Neto Cordeiro de Albuquerque
 - Layla Kethlen Ramos Apolinario
