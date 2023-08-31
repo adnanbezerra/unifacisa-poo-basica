@@ -9,15 +9,25 @@ public class Produto {
         return this.codigo;
     }
 
+    public int getEstoque() {
+    	return this.estoque;
+    }
+    
     public String getInfo() {
         return "Nome: " + this.nome + ", código: " + this.codigo + ", estoque: " + this.estoque;
     }
-
-    public void reduzirEstoque() {
-        this.estoque--;
+    
+     public String reduzirEstoque(int quantidade) {
+    	if(quantidade > this.estoque) {
+    		return "Não há estoque o bastante para esta venda.";
+    	} else {
+            this.estoque = estoque - quantidade;
+    		
+    		return "Estoque do produto atualizado com sucesso!";
+    	}
     }
 
-    public void alterarEstoque(int quantidade) {
+    public void aumentarEstoque(int quantidade) {
         this.estoque += quantidade;
     }
 

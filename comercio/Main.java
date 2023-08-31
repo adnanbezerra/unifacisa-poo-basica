@@ -7,7 +7,7 @@ import java.util.Scanner;
 /* MEMBROS DO GRUPO:
 - Adnan Medeiros Bezerra
 - Natália Galdino Bronzeado
-- Gisele Gabrielle Vidal de Sousa
+- Gizele Gabriele Vidal de Sousa
 - Caio Henrique Ramos Medeiros
 - Adeval Neto Cordeiro de Albuquerque
 - Layla Kethlen Ramos Apolinario
@@ -15,11 +15,15 @@ import java.util.Scanner;
 
 public class Main {
     public static final String TRAVESSAO = "--------------------------";
+    public static final String APERTE_ENTER = "Aperte Enter para continuar";
+    public static final String DIGITE_CODIGO="Digite o código do produto.";
+    public static final String NAO_ENCONTRADO="Produto não encontrado.";
 
     public static void main(String[] args) {
         ArrayList<Produto> produtos = new ArrayList<>();
         produtos.add(new Produto("Caderno", 10, 1));
         produtos.add(new Produto("Caneta", 20, 2));
+        produtos.add(new Produto("Borracha", 5, 3));
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Bem-vindo ao Comério!");
@@ -28,62 +32,119 @@ public class Main {
         while(true) {
             System.out.println(TRAVESSAO);
             listarComandos();
-            System.out.println("Digite o próximo comando: ");
+            System.out.println("Digite o código do comando: ");
             comando = sc.nextLine();
 
-            if(comando.equals("Sair")) {
+            if(comando.equals("6")) {
                 System.out.println("Até mais ver!");
                 break;
 
-            } else if (comando.equals("Listar")) {
+            } else if (comando.equals("1")) {
                 listar(produtos);
-                System.out.println("Aperte Enter para continuar");
+                System.out.println(APERTE_ENTER);
                 sc.nextLine();
 
-            } else if (comando.equals("Cadastrar")) {
+            } else if (comando.equals("2")) {
                 cadastrar(produtos);
-                System.out.println("Aperte Enter para continuar");
+                System.out.println(APERTE_ENTER);
                 sc.nextLine();
 
-            } else if (comando.equals("Adicionar")) {
-                // TODO
-                // Pede o código do produto e quantidade a adicionar e adiciona usando a função aumentarEstoque do objeto Produto
+            } else if (comando.equals("3")) {
+            	adicionar(produtos);
+                System.out.println(APERTE_ENTER);
+                sc.nextLine();
 
-            } else if (comando.equals("Remover")) {
-                // TODO
-                // Pede o código do produto e remove do ArrayList
+            } else if (comando.equals("4")) {
+            	remover(produtos);
+                System.out.println(APERTE_ENTER);
+                sc.nextLine();
 
-            } else if (comando.equals("Vender")) {
-                // TODO
-                // Pede o código do produto e usa a funcao reduzirEstoque do objeto. Talvez seja preciso modificar a função que está no objeto 
+            } else if (comando.equals("5")) {
+            	vender(produtos);
+                System.out.println(APERTE_ENTER);
+                sc.nextLine();
             } 
 
         }
 
         sc.close();
     }
+    
+    public static void remover(List<Produto> produtos) {
+    	Scanner sc = new Scanner(System.in);
+    	
+    	System.out.println(DIGITE_CODIGO);
+    	int codigoProduto = Integer.parseInt(sc.nextLine());
+
+    	// Procurar o produto pelo código na lista produtos
+    	Produto produtoEncontrado = procuraProdutoPeloCodigo(produtos, codigoProduto);
+
+    	if (produtoEncontrado != null) {
+    		if (produtoEncontrado.getEstoque() == 0) {
+				removeProduto(produtos, produtoEncontrado);   			
+    		} else {
+    			System.out.println("O produto ainda está em estoque. Tem certeza que deseja remover?");
+    			System.out.println("Digite 'sim' ou 'não' ");
+    			String confirmacao = sc.nextLine();
+    			
+    			if (confirmacao.equals("sim")) {
+    				removeProduto(produtos, produtoEncontrado);
+    			} else { 
+    				imprimeEntreTravessao("Operação cancelada pelo usuário.");
+    			}
+    		}
+
+    	} else {
+    		imprimeEntreTravessao(NAO_ENCONTRADO);
+    	}
+    	
+    }
+    
+    public static void removeProduto(List<Produto> produtos, Produto produtoEncontrado) {
+    	int indice = produtos.indexOf(produtoEncontrado);
+	    produtos.remove(indice);
+	    
+	    imprimeEntreTravessao("Produto removido!");
+    }
+    
+    
+    public static void vender(List<Produto> produtos) {
+    	Scanner sc = new Scanner(System.in);
+	
+    	System.out.println(DIGITE_CODIGO);
+    	int codigoProduto = Integer.parseInt(sc.nextLine());
+
+    	// Procurar o produto pelo código na lista produtos
+    	Produto produtoEncontrado = procuraProdutoPeloCodigo(produtos, codigoProduto);
+
+    	if (produtoEncontrado != null) {
+    		System.out.println("Digite a quantidade a ser vendida");
+    		int quantidadeVendida = Integer.parseInt(sc.nextLine());
+
+    		String response = produtoEncontrado.reduzirEstoque(quantidadeVendida);
+
+    		imprimeEntreTravessao(response);
+    	} else {
+    		imprimeEntreTravessao(NAO_ENCONTRADO);
+    	}
+    }
+
 
     public static void cadastrar(List<Produto> produtos) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Digite o nome do produto");
+        System.out.println("Digite o nome do produto:");
         String nomeProduto = sc.nextLine();
+        
         //cadastrando código
-        System.out.println("Digite o código do produto");
+        System.out.println(DIGITE_CODIGO);
         int codigoProduto = Integer.parseInt(sc.nextLine());
 
         //verificar se existe código igual
-        boolean codigoJaExistente = false;
-        for (Produto produtoExistente : produtos) {
-            if (produtoExistente.getCodigo() == codigoProduto) {
-                codigoJaExistente = true;
-            }
-            
-        }
+        Produto produtoJaExistente = procuraProdutoPeloCodigo(produtos, codigoProduto);
 
-        if (codigoJaExistente) {
-            System.out.println("Código de produto já cadastrado. Não é possível cadastrar novamente.");
-            cadastrar(produtos);
+        if (produtoJaExistente != null) {
+            System.out.println("Código de produto já cadastrado. Não é possível cadastrar novamente.");   
 
         } else {
             //adicionando o produto
@@ -91,14 +152,13 @@ public class Main {
             produtos.add(novoProduto);
                     
             //adicionando estoque
-            System.out.println("Deseja adicionar estoque a esse produto? Digite sim ou não");
+            System.out.println("Deseja adicionar estoque a esse produto? Digite 'sim' ou 'não'.");
             String adicionarEstoque = sc.nextLine();
 
             if (adicionarEstoque.equals("sim")){
-                System.out.println("Digite a quantidade de produtos");
-                int quantidadeProduto = sc.nextInt();
-                sc.nextLine(); 
-                novoProduto.alterarEstoque(quantidadeProduto);
+                System.out.println("Digite a quantidade de produtos:");
+                int quantidadeProduto = Integer.parseInt(sc.nextLine());
+                novoProduto.aumentarEstoque(quantidadeProduto);
 
                 System.out.println(TRAVESSAO);
                 System.out.printf("O produto %s foi cadastrado com sucesso! Codigo = %d, Estoque = %d %n", nomeProduto, codigoProduto, quantidadeProduto);
@@ -106,10 +166,31 @@ public class Main {
 
             } else if (adicionarEstoque.equals("não")) { 
                 System.out.println(TRAVESSAO);
-                System.out.printf("O produto %s foi cadastrado com sucesso! Codigo = %d, Estoque = 0 %n",nomeProduto,codigoProduto);
+                System.out.printf("O produto %s foi cadastrado com sucesso! Codigo = %d, Estoque = 0 %n", nomeProduto, codigoProduto);
                 System.out.println(TRAVESSAO);
             }   
         }    
+    }
+    
+    public static void adicionar(List<Produto> produtos) {
+    	Scanner sc = new Scanner(System.in);
+    	
+    	System.out.println(DIGITE_CODIGO);
+    	int codigoProduto = Integer.parseInt(sc.nextLine());
+
+    	// Procurar o produto pelo código na lista produtos
+    	Produto produtoEncontrado = procuraProdutoPeloCodigo(produtos, codigoProduto);
+
+    	if (produtoEncontrado != null) {
+    	    System.out.println("Digite a quantidade a ser adicionada ao estoque:");
+    	    int quantidadeAdicionada = Integer.parseInt(sc.nextLine());
+
+    	    produtoEncontrado.aumentarEstoque(quantidadeAdicionada);
+    	    
+    	    imprimeEntreTravessao("Estoque do produto atualizado com sucesso!");
+    	} else {
+    		imprimeEntreTravessao(NAO_ENCONTRADO);
+    	}
     }
 
     public static void listar(List<Produto> produtos) {
@@ -118,6 +199,26 @@ public class Main {
             System.out.println(produtos.get(i).getInfo());
         }
         System.out.println(TRAVESSAO);
+        
+        if (produtos.size()==0) {
+        	System.out.println("Não há produtos cadastrados!");
+        }
+    }
+
+    public static void imprimeEntreTravessao(String imprimir) {
+        System.out.println(TRAVESSAO);
+        System.out.println(imprimir);
+        System.out.println(TRAVESSAO);
+    }
+
+    public static Produto procuraProdutoPeloCodigo(List<Produto> produtos, int codigoProduto) {
+        for (Produto produto : produtos) {
+    	    if (produto.getCodigo() == codigoProduto) {
+    	        return produto;
+    	    }
+    	}
+
+        return null;
     }
 
     public static void listarComandos() {
