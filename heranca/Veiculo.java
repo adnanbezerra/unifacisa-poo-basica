@@ -1,16 +1,16 @@
 package heranca;
 
 public class Veiculo {
-  private String chassis;
-  private int peso;
-  private int lugares;
-  private double velocidadeMaxima;
-  private double velocidadeInstantanea = 0;
+  protected String chassis;
+  protected int peso;
+  protected int quantidadeDeLugares;
+  protected double velocidadeMaxima;
+  protected double velocidadeInstantanea = 0;
 
-  public Veiculo(String chassis, int peso, int lugares, double velocidadeMaxima) {
+  public Veiculo(String chassis, int peso, int quantidadeDeLugares, double velocidadeMaxima) {
     this.chassis = chassis;
     this.peso = peso;
-    this.lugares = lugares;
+    this.quantidadeDeLugares = quantidadeDeLugares;
     this.velocidadeMaxima = velocidadeMaxima;
   }
 
@@ -30,12 +30,8 @@ public class Veiculo {
     this.peso = peso;
   }
 
-  public int getLugares() {
-    return lugares;
-  }
-
-  public void setLugares(int lugares) {
-    this.lugares = lugares;
+  public int getQuantidadeDeLugares() {
+    return quantidadeDeLugares;
   }
 
   public void acelerar(double quantidade) {
