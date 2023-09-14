@@ -37,48 +37,39 @@ public class Main {
 	    	System.out.println("Digite o nome do produto:");
 	    	String nomeProduto = sc.nextLine();
 
-	    	System.out.println(DIGITE_CODIGO);
-	    	int codigoProduto = Integer.parseInt(sc.nextLine());
+	    	System.out.println("Digite uma das categorias disponíveis: Hortifruti, Alimentos ou Bebida:");
+	    	String categoriaNova = sc.nextLine();
 
-	    	Produto produtoJaExistente = procuraProdutoPeloCodigo(produtos, codigoProduto);
+	    	double valorCompra = getValorPositivo(sc, "Digite o valor de compra do produto:");
+	    	double valorVenda = getValorPositivo(sc, "Digite o valor de venda do produto:");
 
-	    	if (produtoJaExistente != null) {
-	    	  System.out.println("Código de produto já cadastrado. Não é possível cadastrar novamente.");
-	    	} else {
-	    	  System.out.println("Digite uma das categorias disponíveis: Hortifruti, Alimentos ou Bebida:");
-	    	  String categoriaNova = sc.nextLine();
+	    	Produto novoProduto = new Produto(nomeProduto, 0, categoriaNova, valorCompra, valorVenda);
+	    	produtos.add(novoProduto);
 
-	    	  double valorCompra = getValorPositivo(sc, "Digite o valor de compra do produto:");
-	    	  double valorVenda = getValorPositivo(sc, "Digite o valor de venda do produto:");
+	    	System.out.println("Deseja adicionar estoque a esse produto? Digite 'sim' ou 'não'.");
+	    	String simOUnao = sc.nextLine();
 
-	    	  Produto novoProduto = new Produto(nomeProduto, codigoProduto, 0, categoriaNova, valorCompra, valorVenda);
-	    	  produtos.add(novoProduto);
+	    	if (simOUnao.equals("sim")) {
+	    	  System.out.println("Digite a quantidade de produtos:");
+	    	  int quantidadeProduto = Integer.parseInt(sc.nextLine());
 
-	    	  System.out.println("Deseja adicionar estoque a esse produto? Digite 'sim' ou 'não'.");
-	    	  String simOUnao = sc.nextLine();
-
-	    	  if (simOUnao.equals("sim")) {
-	    	    System.out.println("Digite a quantidade de produtos:");
-	    	    int quantidadeProduto = Integer.parseInt(sc.nextLine());
-
-	    	    if (quantidadeProduto >= 0) {
-	    	      novoProduto.alterarEstoque(quantidadeProduto);
-	    	      System.out.println(TRAVESSAO);
-	    	      System.out.printf("O produto %s foi cadastrado com sucesso! Código = %d, Estoque = %d%n", nomeProduto, codigoProduto, quantidadeProduto);
-	    	      System.out.println(TRAVESSAO);
-	    	    } else {
-	    	      System.out.println("Não é possível cadastrar produto com estoque negativo.");
-	    	    }
-
-	    	  } else if (simOUnao.equals("não")) {
+	    	  if (quantidadeProduto >= 0) {
+	    	    novoProduto.alterarEstoque(quantidadeProduto);
 	    	    System.out.println(TRAVESSAO);
-	    	    System.out.printf("O produto %s foi cadastrado com sucesso! Código = %d, Estoque = 0%n", nomeProduto, codigoProduto);
-	    	  	System.out.println(TRAVESSAO);
+	    	    System.out.printf("O produto %s foi cadastrado com sucesso! Código = %d, Estoque = %d%n", nomeProduto, quantidadeProduto);
+	    	    System.out.println(TRAVESSAO);
+	    	  } else {
+	    	    System.out.println("Não é possível cadastrar produto com estoque negativo.");
 	    	  }
 
-	    		System.out.println(APERTE_ENTER);
-	    		sc.nextLine();
+	    	} else if (simOUnao.equals("não")) {
+	    	  System.out.println(TRAVESSAO);
+	    	  System.out.printf("O produto %s foi cadastrado com sucesso! Estoque = 0%n", nomeProduto);
+	    	  System.out.println(TRAVESSAO);
 	    	}
+
+	    	System.out.println(APERTE_ENTER);
+	    	sc.nextLine();
 	    	    
 	    } else if (comando.equals("3")) {
 	      //adicionar
