@@ -12,6 +12,6 @@
 
 ##  :clipboard: Descrição
 
-Exercícios e trabalhos feitos para a cadeira de POO básica com Java para o curso de Sistemas da Informação da Unifacisa. O conteúdo abrange desde os princípios da linguagem até herança, encapsulamento e polimorfismo. O professor é Armando Braga Neto.
+Exercícios e trabalhos feitos para a cadeira de POO básica com Java para o curso de Sistemas da Informação da Unifacisa. O conteúdo abrange desde os princípios da linguagem até herança, encapsulamento e polimorfismo. O professor é Armando Agra Neto.
 
 ***
