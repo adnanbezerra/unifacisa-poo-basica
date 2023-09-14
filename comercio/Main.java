@@ -150,13 +150,15 @@ public class Main {
 	    // Falta criar o relatório como um todo
 	    System.out.println(APERTE_ENTER);
 
-		} else {
+		} else if (comando.equals("7")) {
 			// TODO
 		  // Falta persistência de informações
 
 	    System.out.println("Até mais ver!");
 	    break;
-	  }
+	  } else {
+			System.out.println("Comando inválido.");
+		}
 	}
 	sc.close();
 	}
