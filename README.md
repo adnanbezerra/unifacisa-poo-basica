@@ -1,11 +1,11 @@
 # <p align = "center"> POO Básica com Java </p>
 
-<p align="center">
+<p align="center" width="400px">
    <img src="http://lnb.com.br/wp-content/uploads/2018/01/Logo-2-1200x1331.png"/>
 </p>
 
 <p align = "center">
-   <img src="https://img.shields.io/badge/author-adnanbezerra-?style=flat-square" />
+   <img src="https://img.shields.io/badge/author-adnanbezerra?style=flat-square" />
    <img src="https://img.shields.io/github/languages/count/adnanbezerra/unifacisa-poo-basica?color=4dae71&style=flat-square" />
 </p>
 
