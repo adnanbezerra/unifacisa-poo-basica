@@ -26,13 +26,16 @@ public class Main {
 	    comando = sc.nextLine();
 
 	    if (comando.equals("1")) {        	
-	      //falta listar só pelas categorias
+				// TODO
+	      // Falta listar só pelas categorias
+
 	      listarProdutos(produtos);
 	      System.out.println(APERTE_ENTER);
 	      sc.nextLine();
 
 	    } else if (comando.equals("2")) {
-	      //cadastrar: ta completo
+	      // TODO
+				// pensar bem nas categorias 
 
 	    	System.out.println("Digite o nome do produto:");
 	    	String nomeProduto = sc.nextLine();
@@ -72,7 +75,8 @@ public class Main {
 	    	sc.nextLine();
 	    	    
 	    } else if (comando.equals("3")) {
-	      //adicionar
+				// TODO
+	      // falta checar o asldo
 
 	      System.out.println(DIGITE_CODIGO);
 	      int codigoProduto = Integer.parseInt(sc.nextLine());
@@ -119,7 +123,9 @@ public class Main {
 				}
 
 	    } else if (comando.equals("5")) {
-	      //vender: nao ta entrando no cinco
+				// TODO 
+	      // falta alterar o saldo
+
 	      System.out.println("Digite o código do produto");
 	      int codigodoProduto = Integer.parseInt(sc.nextLine());
 
@@ -140,15 +146,18 @@ public class Main {
 	      sc.nextLine();
 
 		} else if (comando.equals("6")) {
-	      // Mostrar relatório
-	      System.out.println(APERTE_ENTER);
+			// TODO 
+	    // Falta criar o relatório como um todo
+	    System.out.println(APERTE_ENTER);
 
 		} else {
-		  //falta salvar informacoes
-	      System.out.println("Até mais ver!");
-	      break;
-	    }
-		}
+			// TODO
+		  // Falta persistência de informações
+			
+	    System.out.println("Até mais ver!");
+	    break;
+	  }
+	}
 	sc.close();
 	}
 	
