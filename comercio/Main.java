@@ -25,12 +25,7 @@ public class Main {
 	    listarComandos();
 	    comando = sc.nextLine();
 
-	    if (comando.equals("7")) {
-	      //falta salvar informacoes
-	      System.out.println("Até mais ver!");
-	      break;
-
-	    } else if (comando.equals("1")) {        	
+	    if (comando.equals("1")) {        	
 	      //falta listar só pelas categorias
 	      listarProdutos(produtos);
 	      System.out.println(APERTE_ENTER);
@@ -153,13 +148,17 @@ public class Main {
 	      System.out.println(APERTE_ENTER);
 	      sc.nextLine();
 
-	    } else {
+		} else if (comando.equals("6")) {
 	      // Mostrar relatório
 	      System.out.println(APERTE_ENTER);
+
+		} else {
+		  //falta salvar informacoes
+	      System.out.println("Até mais ver!");
+	      break;
 	    }
 		}
-
-		sc.close();
+	sc.close();
 	}
 	
 	public static void listarComandos() {
