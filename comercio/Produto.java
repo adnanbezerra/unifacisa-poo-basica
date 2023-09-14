@@ -16,7 +16,7 @@ public class Produto {
 			this.setValorCompra(valorCompra);
 			this.valorVenda = valorVenda;
 			
-			this.codigoProduto = codigoProduto;
+			this.codigoProduto = codigosUsados;
 			codigosUsados++;
 		}
 

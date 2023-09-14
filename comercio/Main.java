@@ -13,9 +13,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		ArrayList<Produto> produtos = new ArrayList<>();
-	  produtos.add(new Produto("Abacaxi", 10, 1, "Hortifruti", 2.5, 3));
-	  produtos.add(new Produto("Arroz", 20, 2, "Alimentos", 2, 4));
-	  produtos.add(new Produto("Agua Mineral", 5, 3, "Bebidas", 1, 2));
+	  produtos.add(new Produto("Abacaxi", 10, "Hortifruti", 2.5, 3));
+	  produtos.add(new Produto("Arroz", 20, "Alimentos", 2, 4));
+	  produtos.add(new Produto("Agua Mineral", 5, "Bebidas", 1, 2));
 
 	  Scanner sc = new Scanner(System.in);
 	  System.out.println("Bem-vindo ao Comério!");
@@ -153,7 +153,7 @@ public class Main {
 		} else {
 			// TODO
 		  // Falta persistência de informações
-			
+
 	    System.out.println("Até mais ver!");
 	    break;
 	  }
