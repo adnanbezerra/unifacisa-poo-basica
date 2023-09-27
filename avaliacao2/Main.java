@@ -14,6 +14,12 @@ public class Main {
     personagens.add(arqueiro);
     personagens.add(mago);
 
+    System.out.println("Eis a lista dos combatentes:");
+
+    for (Personagem personagem : personagens) {
+      System.out.println(personagem.toString());
+    }
+
     System.out.println("Bem-vindo à batalha dos daora");
     System.out.println("Rodada 1");
     balrog.receberDano(guerreiro.causarDano());

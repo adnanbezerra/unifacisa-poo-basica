@@ -13,7 +13,7 @@ public class Mago extends Personagem {
   @Override
   public String toString() {
     return "Nome do personagem: " + this.nome + ", nível: " + this.nivel + ", vida restante: " + this.vida + 
-            "%n Inteligência: " + this.inteligencia + ", agilidade: " + this.agilidade + ", defesa: " + this.defesa +
-            "%n Classe: Mago";
+            "\n Inteligência: " + this.inteligencia + ", agilidade: " + this.agilidade + ", defesa: " + this.defesa +
+            "\n Classe: Mago";
   }
 }

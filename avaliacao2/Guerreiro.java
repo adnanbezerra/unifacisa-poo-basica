@@ -13,7 +13,7 @@ public class Guerreiro extends Personagem {
   @Override
   public String toString() {
     return "Nome do personagem: " + this.nome + ", nível: " + this.nivel + ", vida restante: " + this.vida + 
-            "%n Inteligência: " + this.inteligencia + ", agilidade: " + this.agilidade + ", defesa: " + this.defesa +
-            "%n Classe: Guerreiro";
+            "\n Inteligência: " + this.inteligencia + ", agilidade: " + this.agilidade + ", defesa: " + this.defesa +
+            "\n Classe: Guerreiro";
   }
 }

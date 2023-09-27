@@ -32,6 +32,6 @@ public class Personagem {
     @Override
     public String toString() {
       return "Nome do personagem: " + this.nome + ", nível: " + this.nivel + ", vida restante: " + this.vida + 
-              "%nInteligência: " + this.inteligencia + ", agilidade: " + this.agilidade + ", defesa: " + this.defesa;
+              "\nInteligência: " + this.inteligencia + ", agilidade: " + this.agilidade + ", defesa: " + this.defesa;
     }
 }
